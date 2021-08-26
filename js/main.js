@@ -18,7 +18,7 @@ var homeContainerEl = document.querySelector('.home-container');
 var tabContainerEl = document.querySelector('.tab-container');
 var dropdownContainerEl = document.querySelector('.dropdown-container');
 var profileContainerEl = document.querySelector('.profile-container');
-var chartContainerEl = document.querySelector('.daily-chart-container');
+var chartContainerEl = document.querySelector('.chart-container');
 var chartButtonContainerEl = document.querySelector('.chart-buttons-container');
 stockSearchInput.addEventListener('input', handleInput);
 stockSearchForm.addEventListener('submit', handleSubmit);
@@ -54,6 +54,15 @@ function handleSubmit(event) {
   getBalanceSheetData(symbol);
   getIncomeStatementData(symbol);
   getCashFlowData(symbol);
+  getWeeklySMAData(symbol);
+  getWeeklyEMAData(symbol);
+  getWeeklyWMAData(symbol);
+  getWeeklyMACDData(symbol);
+  getWeeklyStochasticOscillatorData(symbol);
+  getWeeklyMFIData(symbol);
+  getWeeklyRSIData(symbol);
+  getWeeklyBollingerBandsData(symbol);
+  getWeeklyOBVData(symbol);
 }
 
 findButton.addEventListener('click', handleFindClick);
@@ -125,6 +134,211 @@ const autoCompleteJS = new autoComplete({
     }
   }
 });
+
+//TREND INDICATORS
+
+let smaArr = [];
+
+function getWeeklySMAData(symbol) {
+  var xhrSMA = new XMLHttpRequest();
+  xhrSMA.open('GET', `https://www.alphavantage.co/query?function=SMA&symbol=${symbol}&interval=weekly&time_period=20&series_type=open&apikey=EBZ2O8GQQ9CA3ECX`);
+  xhrSMA.responseType = 'json';
+  xhrSMA.addEventListener('load', function () {
+
+    var smaData = xhrSMA.response['Technical Analysis: SMA'];
+    const arr = Object.values(smaData)
+
+    for (let i = 0; i < arr.length; i++) {
+      smaArr.push(arr[i].SMA);
+    }
+
+  });
+  xhrSMA.send();
+}
+
+let emaArr = [];
+
+function getWeeklyEMAData(symbol) {
+  var xhrEMA = new XMLHttpRequest();
+  xhrEMA.open('GET', `https://www.alphavantage.co/query?function=EMA&symbol=${symbol}&interval=weekly&time_period=20&series_type=open&apikey=EBZ2O8GQQ9CA3ECX`);
+  xhrEMA.responseType = 'json';
+  xhrEMA.addEventListener('load', function () {
+
+    var emaData = xhrEMA.response['Technical Analysis: EMA'];
+    const arr = Object.values(emaData)
+
+    for (let i = 0; i < arr.length; i++) {
+      emaArr.push(arr[i].EMA);
+    }
+
+  });
+  xhrEMA.send();
+}
+
+let wmaArr = [];
+
+function getWeeklyWMAData(symbol) {
+  var xhrWMA = new XMLHttpRequest();
+  xhrWMA.open('GET', `https://www.alphavantage.co/query?function=WMA&symbol=${symbol}&interval=weekly&time_period=10&series_type=open&apikey=EBZ2O8GQQ9CA3ECX`);
+  xhrWMA.responseType = 'json';
+  xhrWMA.addEventListener('load', function () {
+
+    var wmaData = xhrWMA.response['Technical Analysis: WMA'];
+    const arr = Object.values(wmaData)
+
+    for (let i = 0; i < arr.length; i++) {
+      wmaArr.push(arr[i].WMA);
+    }
+
+  });
+  xhrWMA.send();
+}
+
+let macdArr = [];
+let macdSignalArr = [];
+
+function getWeeklyMACDData(symbol) {
+  var xhrMACD = new XMLHttpRequest();
+  xhrMACD.open('GET', `https://www.alphavantage.co/query?function=MACD&symbol=${symbol}&interval=weekly&series_type=open&apikey=EBZ2O8GQQ9CA3ECX`);
+  xhrMACD.responseType = 'json';
+  xhrMACD.addEventListener('load', function () {
+
+    var macdData = xhrMACD.response['Technical Analysis: MACD'];
+    const arr = Object.values(macdData)
+
+    for (let i = 0; i < arr.length; i++) {
+      macdArr.push(arr[i].MACD * 10);
+      macdSignalArr.push(arr[i].MACD_Signal * 10);
+    }
+
+  });
+  xhrMACD.send();
+}
+//---//
+
+//MOMENTUM INDICATORS
+let stochasticOscillatorArrD = [];
+let stochasticOscillatorArrK = []
+
+function getWeeklyStochasticOscillatorData(symbol) {
+  var xhrStochastic = new XMLHttpRequest();
+  xhrStochastic.open('GET', `https://www.alphavantage.co/query?function=STOCH&symbol=${symbol}&interval=weekly&apikey=EBZ2O8GQQ9CA3ECX`);
+  xhrStochastic.responseType = 'json';
+  xhrStochastic.addEventListener('load', function () {
+
+    var stochasticOscillatorData = xhrStochastic.response['Technical Analysis: STOCH'];
+    const arr = Object.values(stochasticOscillatorData)
+
+    for (let i = 0; i < arr.length; i++) {
+      stochasticOscillatorArrD.push(arr[i]['SlowD']);
+      stochasticOscillatorArrK.push(arr[i]['SlowK']);
+    }
+
+  });
+  xhrStochastic.send();
+}
+
+let mfiArr = [];
+
+function getWeeklyMFIData(symbol) {
+  var xhrMFI = new XMLHttpRequest();
+  xhrMFI.open('GET', `https://www.alphavantage.co/query?function=MFI&symbol=${symbol}&interval=weekly&time_period=10&apikey=EBZ2O8GQQ9CA3ECX`);
+  xhrMFI.responseType = 'json';
+  xhrMFI.addEventListener('load', function () {
+
+    var mfiData = xhrMFI.response['Technical Analysis: MFI'];
+    const arr = Object.values(mfiData)
+
+    for (let i = 0; i < arr.length; i++) {
+      mfiArr.push(arr[i].MFI);
+    }
+  });
+  xhrMFI.send();
+}
+
+let rsiArr = [];
+
+function getWeeklyRSIData(symbol) {
+  var xhrRSI = new XMLHttpRequest();
+  xhrRSI.open('GET', `https://www.alphavantage.co/query?function=RSI&symbol=${symbol}&interval=weekly&time_period=10&series_type=open&apikey=EBZ2O8GQQ9CA3ECX`);
+  xhrRSI.responseType = 'json';
+  xhrRSI.addEventListener('load', function () {
+
+    var rsiData = xhrRSI.response['Technical Analysis: RSI'];
+    const arr = Object.values(rsiData)
+
+    for (let i = 0; i < arr.length; i++) {
+      rsiArr.push(arr[i].RSI);
+    }
+
+  });
+  xhrRSI.send();
+}
+//---//
+
+//VOLATILITY INDICIATORS
+//BB, ATR
+
+let bollingerBandsArrLower = [];
+let bollingerBandsArrUpper = [];
+let bollingerBandsArrMiddle = []
+
+function getWeeklyBollingerBandsData(symbol) {
+  var xhrBollingerBands = new XMLHttpRequest();
+  xhrBollingerBands.open('GET', `https://www.alphavantage.co/query?function=BBANDS&symbol=${symbol}&interval=weekly&time_period=5&series_type=close&nbdevup=3&nbdevdn=3&apikey=EBZ2O8GQQ9CA3ECX`);
+  xhrBollingerBands.responseType = 'json';
+  xhrBollingerBands.addEventListener('load', function () {
+
+    var bollingerBandsData = xhrBollingerBands.response['Technical Analysis: BBANDS'];
+    const arr = Object.values(bollingerBandsData)
+
+    for (let i = 0; i < arr.length; i++) {
+      bollingerBandsArrLower.push(arr[i]['Real Lower Band']);
+      bollingerBandsArrUpper.push(arr[i]['Real Upper Band']);
+      bollingerBandsArrMiddle.push(arr[i]['Real Middle Band'])
+    }
+
+  });
+  xhrBollingerBands.send();
+}
+//---//
+
+//VOLUME INDICATORS
+//OBV
+
+let obvArr = [];
+
+function getWeeklyOBVData(symbol) {
+  var xhrOBV = new XMLHttpRequest();
+  xhrOBV.open('GET', `https://www.alphavantage.co/query?function=OBV&symbol=${symbol}&interval=weekly&apikey=EBZ2O8GQQ9CA3ECX`);
+  xhrOBV.responseType = 'json';
+  xhrOBV.addEventListener('load', function () {
+
+    var obvData = xhrOBV.response['Technical Analysis: OBV'];
+    const arr = Object.values(obvData)
+
+    for (let i = 0; i < arr.length; i++) {
+      obvArr.push(arr[i].OBV * 0.00000001);
+    }
+
+  });
+  xhrOBV.send();
+}
+//---//
+
+console.log(smaArr)
+console.log(emaArr)
+console.log(wmaArr)
+console.log(macdArr)
+console.log(stochasticOscillatorArrD)
+console.log(stochasticOscillatorArrK)
+console.log(mfiArr)
+console.log(rsiArr)
+console.log(bollingerBandsArrLower)
+console.log(bollingerBandsArrMiddle)
+console.log(bollingerBandsArrUpper)
+console.log(obvArr)
+
 
 function getOverviewData(symbol) {
   var xhrOverview = new XMLHttpRequest();
@@ -424,7 +638,7 @@ function getDailyPrices(symbol) {
       chartLabels.push(key);
     }
 
-    var chart = document.getElementById('dailyPriceChart');
+    var chart = document.getElementById('priceChart');
 
     if (closePrices.length === 0) {
       alert('Sorry, there is no data available for this chart.');
@@ -468,7 +682,7 @@ function getIntraDayPrices(symbol) {
       chartLabels.push(key);
     }
 
-    var chart = document.getElementById('dailyPriceChart');
+    var chart = document.getElementById('priceChart');
 
     if (closePrices.length === 0) {
       alert('Sorry, there is no data available for this chart.');
@@ -511,7 +725,7 @@ function getWeeklyPrices(symbol) {
       chartLabels.push(key);
     }
 
-    var chart = document.getElementById('dailyPriceChart');
+    var chart = document.getElementById('priceChart');
 
     if (closePrices.length === 0) {
       alert('Sorry, there is no data available for this chart.');
@@ -528,7 +742,8 @@ function getWeeklyPrices(symbol) {
           backgroundColor: 'rgba(44, 130, 201, 1)',
           borderColor: 'rgba(44, 130, 201, 1)',
           borderWidth: 1
-        }]
+        },
+      ]
       },
       options: {
         responsive: false
@@ -555,7 +770,7 @@ function getMonthlyPrices(symbol) {
       chartLabels.push(key);
     }
 
-    var chart = document.getElementById('dailyPriceChart');
+    var chart = document.getElementById('priceChart');
 
     if (closePrices.length === 0) {
       alert('Sorry, there is no data available for this chart.');

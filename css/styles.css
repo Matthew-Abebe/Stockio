@@ -56,8 +56,20 @@ li {
   display: inline;
 }
 
+.col-half {
+  width: 50%;
+}
+
 .chart-buttons {
   display: inline-block;
+}
+
+.chart-button {
+  color: white;
+  background-color: navy;
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
 }
 
 .profile-data,
@@ -71,37 +83,21 @@ li {
   margin-right: 40px;
 }
 
-.chart-button {
-  color: white;
-  background-color: navy;
-  margin-left: 20px;
-  margin-right: 20px;
-  cursor: pointer;
-}
-
 #autoComplete {
   text-align: center;
   margin: 0 auto;
   margin-top: 30px;
 }
 
-canvas#dailyPriceChart {
-  display: block;
-  box-sizing: border-box;
-  margin: 0 auto;
-  height: 350px;
-  width: 350px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: solid 1px navy;
+#chart {
+  display: flex;
+  justify-content: flex-start;
 }
 
-canvas#intraDayPriceChart {
-  display: block;
-  box-sizing: border-box;
-  margin: 0 auto;
-  height: 350px;
-  width: 350px;
+
+canvas#priceChart {
+  height: 250px;
+  width: 250px;
 }
 
 .find-button {
@@ -130,17 +126,18 @@ canvas#intraDayPriceChart {
   display: flex;
   width: 100%;
   margin: 0 auto;
-  margin-top: 40px;
-  background-color: #b3fc99;
+  margin-top: 20px;
+  /* background-color: #b3fc99; */
 }
 
 .tab-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 10px;
   position: relative;
   top: 1px;
   margin: 0 auto;
-  background-color: #b3fc99;
+  /* background-color: #b3fc99; */
 }
 
 .home-container {

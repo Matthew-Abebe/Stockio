@@ -26,13 +26,17 @@ body {
 }
 
 .chart-container {
-  display: flex;
-  justify-content: center;
+  height: 400px;
+  width: 400px;
 }
+
+/* #chart-container {
+  height: 50%;
+} */
 
 .chart-buttons-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .tab-container {
