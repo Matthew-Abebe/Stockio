@@ -110,7 +110,6 @@ canvas#intraDayPriceChart {
   background-color: navy;
   color: white;
   cursor: pointer;
-  margin: 0 auto;
   margin-top: 30px;
   display: block;
 }
@@ -150,10 +149,6 @@ canvas#intraDayPriceChart {
 
 #autoComplete_list > li {
   display: block;
-}
-
-form#symbol-form {
-  justify-content: center;
 }
 
 @media only screen and (max-width: 805px) {

@@ -25,152 +25,152 @@
 
 <body>
 
-  <div class="header-container">
-    <div class="row">
-      <div class="col-full">
+  <div class="home-container view" data-view="home">
+    <div class="header-container">
+      <div class="row">
+        <div class="col-full">
           <button class="header-button">
             <h1>Stockio</h1>
           </button>
         </div>
       </div>
     </div>
-    <div class="home-container view" data-view="home">
-      <div class="logo-container">
-        <div class="row">
-          <div class="col-full">
-            <img src="images/stair-stock-market-business-logo-icon-design-vector-22926779.jpg" alt="arrow-vector">
-          </div>
-        </div>
-      </div>
-      <div class="search-box-container">
-        <div class="row">
-          <div class="col-full">
-            <form id="symbol-form">
-              <input type="search" id="autoComplete" name="stockName">
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="find-button-container">
-        <div class="row">
-          <div class="col-full">
-            <button class="find-button">Find</button>
-          </div>
+    <div class="logo-container">
+      <div class="row">
+        <div class="col-full">
+          <img src="images/stair-stock-market-business-logo-icon-design-vector-22926779.jpg" alt="arrow-vector">
         </div>
       </div>
     </div>
-
-      <div class="daily-chart-container hidden">
-        <div class="col-full">
-          <div class="row">
-            <div>
-              <canvas id="dailyPriceChart" height="400" width="400"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div class="search-box-container">
       <div class="row">
         <div class="col-full">
-          <div class="chart-buttons-container hidden">
-            <button class="intraday-chart-button chart-button">IntraDay</button>
-            <button class="daily-chart-button chart-button">Daily</button>
-            <button class="weekly-chart-button chart-button">Weekly</button>
-            <button class="monthly-chart-button chart-button">Monthly</button>
-          </div>
+          <form id="symbol-form">
+            <input type="search" id="autoComplete" name="stockName">
+          </form>
         </div>
       </div>
-
-      <div class="col-full">
-        <div class="row">
-          <div class="tabbed-views">
-            <div class="tab-container hidden">
-              <button class="tab" data-view="profile">Profile</button>
-              <button class="tab" data-view="profitability">Profitability</button>
-              <button class="tab" data-view="liquidity">Liquidity</button>
-              <button class="tab" data-view="solvency">Solvency</button>
-              <button class="tab" data-view="valuation">Valuation</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="dropdown-container hidden">
-        <label for="stock-data-select">Choose Stock Data:</label>
-        <select name="stock-data-select" id="stock-data-select">
-          <option value="">--Please choose an option--</option>
-          <option value="profile" class="option" data-view="profile">Profile</option>
-          <option value="profitability" class="option" data-view="profitability">Profitability</option>
-          <option value="liquidity" class="option" data-view="liquidity">Liquidity</option>
-          <option value="solvency" class="option" data-view="solvency">Solvency</option>
-          <option value="valuation" class="option" data-view="valuation">Valuation</option>
-        </select>
-      </div>
-
-      <div class="profile-container view hidden" data-view="profile">
+    </div>
+    <div class="find-button-container">
+      <div class="row">
         <div class="col-full">
-          <div class="row">
-            <h2>Profile</h2>
-          </div>
-          <div class="row">
-            <div class="profile-data-list">
-              <ul class="profile-data"></ul>
-            </div>
-          </div>
+          <button class="find-button">Find</button>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="profitability-container view hidden" data-view="profitability">
-        <div class="col-full">
-          <div class="row">
-            <h2>Profitability</h2>
-          </div>
-          <div class="row">
-            <div class="profitability-data-list">
-              <ul class="profitability-data"></ul>
-            </div>
-          </div>
+  <div class="daily-chart-container hidden">
+    <div class="col-full">
+      <div class="row">
+        <div>
+          <canvas id="dailyPriceChart" height="400" width="400"></canvas>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="liquidity-container view hidden" data-view="liquidity">
-        <div class="col-full">
-          <div class="row">
-            <h2>Liquidity</h2>
-          </div>
-          <div class="row">
-            <div class="liquidity-data-list">
-              <ul class="liquidity-data"></ul>
-            </div>
-          </div>
-        </div>
+  <div class="row">
+    <div class="col-full">
+      <div class="chart-buttons-container hidden">
+        <button class="intraday-chart-button chart-button">IntraDay</button>
+        <button class="daily-chart-button chart-button">Daily</button>
+        <button class="weekly-chart-button chart-button">Weekly</button>
+        <button class="monthly-chart-button chart-button">Monthly</button>
       </div>
+    </div>
+  </div>
 
-      <div class="solvency-container view hidden" data-view="solvency">
-        <div class="col-full">
-          <div class="row">
-            <h2>Solvency</h2>
-          </div>
-          <div class="row">
-            <div class="solvency-data-list">
-              <ul class="solvency-data"></ul>
-            </div>
-          </div>
+  <div class="col-full">
+    <div class="row">
+      <div class="tabbed-views">
+        <div class="tab-container hidden">
+          <button class="tab" data-view="profile">Profile</button>
+          <button class="tab" data-view="profitability">Profitability</button>
+          <button class="tab" data-view="liquidity">Liquidity</button>
+          <button class="tab" data-view="solvency">Solvency</button>
+          <button class="tab" data-view="valuation">Valuation</button>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="valuation-container view hidden" data-view="valuation">
-        <div class="col-full">
-          <div class="row">
-            <h2>Valuation</h2>
-          </div>
-          <div class="row">
-            <div class="valuation-data-list">
-              <ul class="valuation-data"></ul>
-            </div>
-          </div>
+  <div class="dropdown-container hidden">
+    <label for="stock-data-select">Choose Stock Data:</label>
+    <select name="stock-data-select" id="stock-data-select">
+      <option value="">--Please choose an option--</option>
+      <option value="profile" class="option" data-view="profile">Profile</option>
+      <option value="profitability" class="option" data-view="profitability">Profitability</option>
+      <option value="liquidity" class="option" data-view="liquidity">Liquidity</option>
+      <option value="solvency" class="option" data-view="solvency">Solvency</option>
+      <option value="valuation" class="option" data-view="valuation">Valuation</option>
+    </select>
+  </div>
+
+  <div class="profile-container view hidden" data-view="profile">
+    <div class="col-full">
+      <div class="row">
+        <h2>Profile</h2>
+      </div>
+      <div class="row">
+        <div class="profile-data-list">
+          <ul class="profile-data"></ul>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="profitability-container view hidden" data-view="profitability">
+    <div class="col-full">
+      <div class="row">
+        <h2>Profitability</h2>
+      </div>
+      <div class="row">
+        <div class="profitability-data-list">
+          <ul class="profitability-data"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="liquidity-container view hidden" data-view="liquidity">
+    <div class="col-full">
+      <div class="row">
+        <h2>Liquidity</h2>
+      </div>
+      <div class="row">
+        <div class="liquidity-data-list">
+          <ul class="liquidity-data"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="solvency-container view hidden" data-view="solvency">
+    <div class="col-full">
+      <div class="row">
+        <h2>Solvency</h2>
+      </div>
+      <div class="row">
+        <div class="solvency-data-list">
+          <ul class="solvency-data"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="valuation-container view hidden" data-view="valuation">
+    <div class="col-full">
+      <div class="row">
+        <h2>Valuation</h2>
+      </div>
+      <div class="row">
+        <div class="valuation-data-list">
+          <ul class="valuation-data"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
