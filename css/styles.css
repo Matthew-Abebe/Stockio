@@ -163,6 +163,13 @@ canvas#intraDayPriceChart {
   }
 }
 
+.logo-container,
+.search-box-container,
+.find-button-container {
+  display: flex;
+  justify-content: center;
+}
+
 .hidden {
   display: none;
 }
