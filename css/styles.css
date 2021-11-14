@@ -106,12 +106,16 @@ canvas#intraDayPriceChart {
 
 .find-button {
   width: 100px;
-  height: 30px;
+  height: 40px;
   background-color: navy;
   color: white;
   cursor: pointer;
   margin-top: 30px;
   display: block;
+}
+
+input.btn.find-button:disabled {
+  background-color: navy;
 }
 
 .tab {
