@@ -7,6 +7,10 @@ header {
   margin-bottom: 20px;
 }
 
+.header {
+  background-color: navy;
+}
+
 .header-button-container {
   display: flex;
   align-items: flex-start;
